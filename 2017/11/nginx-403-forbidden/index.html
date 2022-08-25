@@ -4,7 +4,7 @@
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.0">
+<meta name="generator" content="Hexo 6.2.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
@@ -29,7 +29,7 @@
 <meta property="og:description" content="每次重新部署 Nginx 总会遇到 Nginx 403 Forbidden 这个错误，这里列一个排除此类错误的清单。  确认 Nginx 正常启动，这里要记录启动 Nginx 的用户供后续步骤使用，通常是 nginx。  $ ps -ef | grep nginx | grep -v greproot   1714     1  0 14:27 ?  00:00:00 nginx: master">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2017-11-14T14:52:33.000Z">
-<meta property="article:modified_time" content="2020-12-23T06:59:46.250Z">
+<meta property="article:modified_time" content="2017-11-14T14:52:33.000Z">
 <meta property="article:author" content="zhongyiio">
 <meta property="article:tag" content="Nginx">
 <meta name="twitter:card" content="summary">
@@ -188,13 +188,6 @@
 
               <time title="Created: 2017-11-14 22:52:33" itemprop="dateCreated datePublished" datetime="2017-11-14T22:52:33+08:00">2017-11-14</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-12-23 14:59:46" itemprop="dateModified" datetime="2020-12-23T14:59:46+08:00">2020-12-23</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -222,13 +215,13 @@
  <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ps -ef | grep nginx | grep -v grep</span><br><span class="line"></span><br><span class="line">root   1714     1  0 14:27 ?  00:00:00 nginx: master process /usr/sbin/nginx</span><br><span class="line">nginx  1973  1714  0 14:45 ?  00:00:00 nginx: worker process</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>确认 Nginx 的初始配置 <code>/etc/nginx/nginx.conf</code> 正确，特别注意 <code>root</code> 和 <code>index</code>。</p>
- <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ cat /etc/nginx/nginx.conf</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line">server &#123;</span><br><span class="line">    listen       80;</span><br><span class="line">    listen       [::]:80;</span><br><span class="line">    server_name  _;</span><br><span class="line">    root         /srv/zhongyiio/;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        index  index.html;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">$ sudo nginx -t  <span class="comment"># 如果不是以下结果，需要根据报错修改语法错误</span></span><br><span class="line"></span><br><span class="line">nginx: the configuration file /etc/nginx/nginx.conf syntax is ok</span><br><span class="line">nginx: configuration file /etc/nginx/nginx.conf <span class="built_in">test</span> is successful</span><br></pre></td></tr></table></figure>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">cat</span> /etc/nginx/nginx.conf</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line">server &#123;</span><br><span class="line">    listen       80;</span><br><span class="line">    listen       [::]:80;</span><br><span class="line">    server_name  _;</span><br><span class="line">    root         /srv/zhongyiio/;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        index  index.html;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">$ sudo nginx -t  <span class="comment"># 如果不是以下结果，需要根据报错修改语法错误</span></span><br><span class="line"></span><br><span class="line">nginx: the configuration file /etc/nginx/nginx.conf syntax is ok</span><br><span class="line">nginx: configuration file /etc/nginx/nginx.conf <span class="built_in">test</span> is successful</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>确认网站静态目录权限，一般情况文件夹 755、文件 644 就行，用户和用户组和步骤 1 保持一致，这里为 nginx。</p>
- <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ls -la /srv/zhongyiio</span><br><span class="line"></span><br><span class="line">total 44</span><br><span class="line">drwxr-xr-x. 11 nginx nginx   235 Nov 13 08:27 .</span><br><span class="line">drwxr-xr-x.  3 root  root     23 Nov 14 14:14 ..</span><br><span class="line">drw-r--r--.  5 nginx nginx    36 Nov 13 08:27 2017</span><br><span class="line">-rw-r--r--.  1 nginx nginx    10 Nov 13 08:27 CNAME</span><br><span class="line">drw-r--r--.  3 nginx nginx    36 Nov 13 08:27 archives</span><br><span class="line">-rw-r--r--.  1 nginx nginx 18197 Nov 13 08:27 atom.xml</span><br><span class="line">-rw-r--r--.  1 nginx nginx  1785 Nov 13 08:27 baidusitemap.xml</span><br><span class="line">drw-r--r--.  4 nginx nginx    32 Nov 13 08:27 categories</span><br><span class="line">drw-r--r--.  2 nginx nginx    44 Nov 13 08:27 css</span><br><span class="line">-rw-r--r--.  1 nginx nginx  1150 Nov 13 08:27 favicon.ico</span><br><span class="line">drw-r--r--.  2 nginx nginx    70 Nov 13 08:27 img</span><br><span class="line">-rw-r--r--.  1 nginx nginx  5164 Nov 13 08:27 index.html</span><br><span class="line">drw-r--r--.  2 nginx nginx    23 Nov 13 08:27 js</span><br><span class="line">drw-r--r--.  2 nginx nginx    24 Nov 13 08:27 reading</span><br><span class="line">-rw-r--r--.  1 nginx nginx   922 Nov 13 08:27 sitemap.xml</span><br><span class="line">drw-r--r--.  3 nginx nginx    23 Nov 13 08:27 tags</span><br><span class="line">drw-r--r--.  2 nginx nginx    24 Nov 13 08:27 talking</span><br></pre></td></tr></table></figure>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">ls</span> -la /srv/zhongyiio</span><br><span class="line"></span><br><span class="line">total 44</span><br><span class="line">drwxr-xr-x. 11 nginx nginx   235 Nov 13 08:27 .</span><br><span class="line">drwxr-xr-x.  3 root  root     23 Nov 14 14:14 ..</span><br><span class="line">drw-r--r--.  5 nginx nginx    36 Nov 13 08:27 2017</span><br><span class="line">-rw-r--r--.  1 nginx nginx    10 Nov 13 08:27 CNAME</span><br><span class="line">drw-r--r--.  3 nginx nginx    36 Nov 13 08:27 archives</span><br><span class="line">-rw-r--r--.  1 nginx nginx 18197 Nov 13 08:27 atom.xml</span><br><span class="line">-rw-r--r--.  1 nginx nginx  1785 Nov 13 08:27 baidusitemap.xml</span><br><span class="line">drw-r--r--.  4 nginx nginx    32 Nov 13 08:27 categories</span><br><span class="line">drw-r--r--.  2 nginx nginx    44 Nov 13 08:27 css</span><br><span class="line">-rw-r--r--.  1 nginx nginx  1150 Nov 13 08:27 favicon.ico</span><br><span class="line">drw-r--r--.  2 nginx nginx    70 Nov 13 08:27 img</span><br><span class="line">-rw-r--r--.  1 nginx nginx  5164 Nov 13 08:27 index.html</span><br><span class="line">drw-r--r--.  2 nginx nginx    23 Nov 13 08:27 js</span><br><span class="line">drw-r--r--.  2 nginx nginx    24 Nov 13 08:27 reading</span><br><span class="line">-rw-r--r--.  1 nginx nginx   922 Nov 13 08:27 sitemap.xml</span><br><span class="line">drw-r--r--.  3 nginx nginx    23 Nov 13 08:27 tags</span><br><span class="line">drw-r--r--.  2 nginx nginx    24 Nov 13 08:27 talking</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>确认 SELinux 是否开启，<em>不建议关闭 SELinux</em></p>
- <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ sestatus</span><br><span class="line"></span><br><span class="line">SELinux status:                 enabled</span><br><span class="line">SELinuxfs mount:                /sys/fs/selinux</span><br><span class="line">SELinux root directory:         /etc/selinux</span><br><span class="line">Loaded policy name:             targeted</span><br><span class="line">Current mode:                   enforcing</span><br><span class="line">Mode from config file:          enforcing</span><br><span class="line">Policy MLS status:              enabled</span><br><span class="line">Policy deny_unknown status:     allowed</span><br><span class="line">Max kernel policy version:      28</span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果状态为 enabled 使用该命令，确保之后建立的文件和复制的文件具有</span></span><br><span class="line"><span class="comment"># 相同  httpd_sys_content_t 的类型，从而使受限的 httpd 进程能够访问</span></span><br><span class="line">$ sudo chcon -R -t httpd_sys_content_t /srv/zhongyiio/</span><br></pre></td></tr></table></figure>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ sestatus</span><br><span class="line"></span><br><span class="line">SELinux status:                 enabled</span><br><span class="line">SELinuxfs mount:                /sys/fs/selinux</span><br><span class="line">SELinux root directory:         /etc/selinux</span><br><span class="line">Loaded policy name:             targeted</span><br><span class="line">Current mode:                   enforcing</span><br><span class="line">Mode from config file:          enforcing</span><br><span class="line">Policy MLS status:              enabled</span><br><span class="line">Policy deny_unknown status:     allowed</span><br><span class="line">Max kernel policy version:      28</span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果状态为 enabled 使用该命令，确保之后建立的文件和复制的文件具有</span></span><br><span class="line"><span class="comment"># 相同  httpd_sys_content_t 的类型，从而使受限的 httpd 进程能够访问</span></span><br><span class="line">$ sudo <span class="built_in">chcon</span> -R -t httpd_sys_content_t /srv/zhongyiio/  </span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 
@@ -305,7 +298,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

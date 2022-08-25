@@ -4,7 +4,7 @@
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.0">
+<meta name="generator" content="Hexo 6.2.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
@@ -29,7 +29,7 @@
 <meta property="og:description" content="给定一个无序的整数数组，找到其中最长上升子序列的长度。 示例: 输入: [10,9,2,5,3,7,101,18]输出: 4 解释: 最长的上升子序列是 [2,3,7,101]，它的长度是 4。 这道题目的关键是找到切入点，$dp(i)$ 指的是以第 i 个元素结尾的最长递增序列， 用数学公式表示如下：  dp(i)&#x3D;max\{d(j)+1, nums[j] &lt; nums[i], \{j \in">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-04-02T10:12:52.000Z">
-<meta property="article:modified_time" content="2020-12-23T06:59:46.252Z">
+<meta property="article:modified_time" content="2020-04-02T10:12:52.000Z">
 <meta property="article:author" content="zhongyiio">
 <meta property="article:tag" content="LIS">
 <meta name="twitter:card" content="summary">
@@ -188,13 +188,6 @@
 
               <time title="Created: 2020-04-02 18:12:52" itemprop="dateCreated datePublished" datetime="2020-04-02T18:12:52+08:00">2020-04-02</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-12-23 14:59:46" itemprop="dateModified" datetime="2020-12-23T14:59:46+08:00">2020-12-23</time>
-              </span>
 
           
 
@@ -209,7 +202,7 @@
       
         <p>给定一个无序的整数数组，找到其中最长上升子序列的长度。</p>
 <p>示例:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: [10,9,2,5,3,7,101,18]</span><br><span class="line">输出: 4 </span><br><span class="line">解释: 最长的上升子序列是 [2,3,7,101]，它的长度是 4。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">输入: [10,9,2,5,3,7,101,18]</span><br><span class="line">输出: 4 </span><br><span class="line">解释: 最长的上升子序列是 [2,3,7,101]，它的长度是 4。</span><br></pre></td></tr></table></figure>
 <p>这道题目的关键是找到切入点，$dp(i)$ 指的是以第 i 个元素结尾的最长递增序列， 用数学公式表示如下：</p>
 <script type="math/tex; mode=display">
 dp(i)=max\{d(j)+1, nums[j] < nums[i], \{j \in \{0...i-1\}\}</script><p>表1 模拟</p>
@@ -255,7 +248,7 @@ dp(i)=max\{d(j)+1, nums[j] < nums[i], \{j \in \{0...i-1\}\}</script><p>表1 模�
 </table>
 </div>
 <p><strong>代码：</strong></p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">lengthOfLIS</span><span class="params">(nums []<span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">	l := <span class="built_in">len</span>(nums)</span><br><span class="line">	<span class="keyword">if</span> l == <span class="number">0</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">	&#125;</span><br><span class="line">	dp := <span class="built_in">make</span>([]<span class="keyword">int</span>, l)</span><br><span class="line">	<span class="comment">// initial dp array default 1</span></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; l; i++ &#123;</span><br><span class="line">		dp[i] = <span class="number">1</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	res := <span class="number">1</span></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; l; i++ &#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> j := i - <span class="number">1</span>; j &gt;= <span class="number">0</span>; j-- &#123;</span><br><span class="line">			<span class="keyword">if</span> nums[j] &lt; nums[i] &#123;</span><br><span class="line">				dp[i] = max(dp[i], <span class="number">1</span> + dp[j])</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		res = max(res, dp[i])</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">max</span><span class="params">(a, b <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">	<span class="keyword">if</span> a &gt; b &#123;</span><br><span class="line">		<span class="keyword">return</span> a</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> b</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">lengthOfLIS</span><span class="params">(nums []<span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">	l := <span class="built_in">len</span>(nums)</span><br><span class="line">	<span class="keyword">if</span> l == <span class="number">0</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">	&#125;</span><br><span class="line">	dp := <span class="built_in">make</span>([]<span class="type">int</span>, l)</span><br><span class="line">	<span class="comment">// initial dp array default 1</span></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; l; i++ &#123;</span><br><span class="line">		dp[i] = <span class="number">1</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	res := <span class="number">1</span></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; l; i++ &#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> j := i - <span class="number">1</span>; j &gt;= <span class="number">0</span>; j-- &#123;</span><br><span class="line">			<span class="keyword">if</span> nums[j] &lt; nums[i] &#123;</span><br><span class="line">				dp[i] = max(dp[i], <span class="number">1</span> + dp[j])</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		res = max(res, dp[i])</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">max</span><span class="params">(a, b <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">	<span class="keyword">if</span> a &gt; b &#123;</span><br><span class="line">		<span class="keyword">return</span> a</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> b</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -330,7 +323,7 @@ dp(i)=max\{d(j)+1, nums[j] < nums[i], \{j \in \{0...i-1\}\}</script><p>表1 模�
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
