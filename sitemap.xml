@@ -3,16 +3,23 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://zhongyi.io/blog/</loc>
-    <lastmod>2024-07-29T10:47:17+08:00</lastmod>
+    <lastmod>2024-12-05T18:52:17+08:00</lastmod>
+  </url><url>
+    <loc>https://zhongyi.io/tags/fish/</loc>
+    <lastmod>2024-12-05T18:52:17+08:00</lastmod>
   </url><url>
     <loc>https://zhongyi.io/</loc>
-    <lastmod>2024-07-29T10:47:17+08:00</lastmod>
-  </url><url>
-    <loc>https://zhongyi.io/blog/new/</loc>
-    <lastmod>2024-07-29T10:47:17+08:00</lastmod>
-  </url><url>
-    <loc>https://zhongyi.io/categories/</loc>
+    <lastmod>2024-12-05T18:52:17+08:00</lastmod>
   </url><url>
     <loc>https://zhongyi.io/tags/</loc>
+    <lastmod>2024-12-05T18:52:17+08:00</lastmod>
+  </url><url>
+    <loc>https://zhongyi.io/tags/zsh/</loc>
+    <lastmod>2024-12-05T18:52:17+08:00</lastmod>
+  </url><url>
+    <loc>https://zhongyi.io/blog/new/</loc>
+    <lastmod>2024-12-05T18:52:17+08:00</lastmod>
+  </url><url>
+    <loc>https://zhongyi.io/categories/</loc>
   </url>
 </urlset>
