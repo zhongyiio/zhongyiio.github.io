@@ -1,6 +1,7 @@
 title = 'zhongyi.io'
 theme = 'PaperMod'
-paginate = 10
+[pagination]
+  pagerSize = 10
 enableRobotsTXT = true
 defaultContentLanguage = 'zh-cn'
 
