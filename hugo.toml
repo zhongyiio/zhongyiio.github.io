@@ -1,4 +1,4 @@
-title = 'zhongyi.io'
+title = 'Zhongyi I/O'
 theme = 'PaperMod'
 [pagination]
   pagerSize = 10
@@ -7,3 +7,8 @@ defaultContentLanguage = 'zh-cn'
 
 [params]
   defaultTheme = 'auto'
+  mode = 'info'
+
+[params.homeInfoParams]
+  Title = "Hi there 👋"
+  Content = "Welcome to my personal blog. I write about technology, programming, and other interests."
