@@ -5,4 +5,4 @@ enableRobotsTXT = true
 defaultContentLanguage = 'zh-cn'
 
 [params]
-  defaultTheme = 'auto'   # 自动深浅色
+  defaultTheme = 'auto'
