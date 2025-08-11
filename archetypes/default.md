@@ -1,11 +1,17 @@
-+++
-title = '{{ replace .File.ContentBaseName "-" " " | title }}'
-date = '{{ .Date }}'
-draft = true
-categories = []
-tags = []
-description = ""
-+++
+---
+title: '{{ replace .File.ContentBaseName "-" " " | title }}'
+date: '{{ .Date }}'
+draft: true
+description: ''
+# categories: []
+# tags: []
+# cover:
+#   image: ''
+#   alt: ''
+#   caption: ''
+# ShowToc: true
+# TocOpen: true
+---
 
 ## 开始写作
 

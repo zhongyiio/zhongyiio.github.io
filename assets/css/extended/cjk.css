@@ -1,0 +1,37 @@
+/* Minimal CJK typography improvements for PaperMod */
+
+/* Prefer Chinese-friendly font stack when page language is zh */
+html[lang^="zh"] body,
+:lang(zh) body {
+  font-family: -apple-system, BlinkMacSystemFont,
+    "PingFang SC", "Hiragino Sans GB", "Noto Sans SC",
+    "Source Han Sans SC", "Microsoft YaHei",
+    "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* Improve readability for long Chinese paragraphs */
+.post-content {
+  line-height: 1.8;
+  word-break: break-word;     /* break long English tokens gracefully */
+  overflow-wrap: anywhere;    /* allow wrapping of long URLs/words */
+}
+
+/* Indent Chinese paragraphs by 2em, but avoid indent right after headings
+   and inside lists/quotes/code/tables/figures */
+.post-content p {
+  margin: 1em 0;
+}
+
+.post-content :is(h1,h2,h3,h4,h5,h6) + p,
+.post-content :is(li, blockquote, td, th) p,
+.post-content :is(pre, code, table, figure, .highlight) ~ p {
+  text-indent: 0;
+}
+
+/* Keep code blocks compact enough while readable */
+.post-content pre,
+.post-content code {
+  line-height: 1.6;
+}
+
+

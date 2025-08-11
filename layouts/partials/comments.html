@@ -1,0 +1,25 @@
+{{- /* Giscus comments embed */ -}}
+{{- $g := site.Params.giscus -}}
+{{- if and site.Params.comments $g $g.repo $g.repoID $g.categoryID -}}
+<section id="comments">
+  <script src="https://giscus.app/client.js"
+          data-repo="{{ $g.repo }}"
+          data-repo-id="{{ $g.repoID }}"
+          data-category="{{ $g.category }}"
+          data-category-id="{{ $g.categoryID }}"
+          data-mapping="{{ $g.mapping | default "pathname" }}"
+          data-strict="{{ $g.strict | default 1 }}"
+          data-reactions-enabled="{{ $g.reactionsEnabled | default 1 }}"
+          data-emit-metadata="{{ $g.emitMetadata | default 0 }}"
+          data-input-position="{{ $g.inputPosition | default "bottom" }}"
+          data-theme="{{ $g.theme | default "preferred_color_scheme" }}"
+          data-lang="{{ $g.lang | default "zh-CN" }}"
+          data-loading="{{ $g.loading | default "lazy" }}"
+          crossorigin="anonymous"
+          async>
+  </script>
+  <noscript>请开启 JavaScript 以查看评论。</noscript>
+</section>
+{{- end -}}
+
+

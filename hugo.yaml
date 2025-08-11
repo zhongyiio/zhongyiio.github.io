@@ -1,0 +1,96 @@
+# Hugo site configuration (YAML)
+# Converted from hugo.toml, simplified for PaperMod
+
+title: "Zhongyi I/O"
+theme: "PaperMod"
+
+pagination:
+  pagerSize: 10
+
+enableRobotsTXT: true
+defaultContentLanguage: "zh"
+languageCode: "zh-CN"
+hasCJKLanguage: true
+
+# Syntax highlighting (PaperMod recommends noClasses: false)
+markup:
+  highlight:
+    noClasses: false
+
+# Outputs (enable JSON for search)
+outputs:
+  home: ["HTML", "RSS", "JSON"]
+
+# Main navigation
+menu:
+  main:
+    - identifier: "archive"
+      name: "归档"
+      url: "/archives/"
+      weight: 10
+    - identifier: "categories"
+      name: "分类"
+      url: "/categories/"
+      weight: 20
+    - identifier: "tags"
+      name: "标签"
+      url: "/tags/"
+      weight: 30
+    - identifier: "search"
+      name: "搜索"
+      url: "/search/"
+      weight: 40
+
+params:
+  env: "production"
+  defaultTheme: "auto"
+  DateFormat: "2006年01月02日"
+  mainSections: ["posts"]
+  ShowToc: true
+  ShowCodeCopyButtons: true
+
+  comments: true
+  # Giscus configuration (fill with your repository info)
+  giscus:
+    repo: "zhongyiio/zhongyiio.github.io"
+    repoID: "R_kgDOPb2zng"
+    category: "Announcements"
+    categoryID: "DIC_kwDOPb2zns4CuCMI"
+    mapping: "title"
+    strict: 0
+    reactionsEnabled: 1
+    emitMetadata: 0
+    inputPosition: "top"
+    theme: "preferred_color_scheme"
+    lang: "zh-CN"
+    loading: "lazy"
+
+  # Site label/logo
+  label:
+    text: "Zhongyi I/O"
+    icon: "logo.jpeg"
+    iconHeight: 35
+
+  # Favicons
+  assets:
+    favicon: "logo.jpeg"
+    favicon16x16: "logo.jpeg"
+    favicon32x32: "logo.jpeg"
+    apple_touch_icon: "logo.jpeg"
+    safari_pinned_tab: "logo.jpeg"
+
+  # Social icons
+  socialIcons:
+    - name: "github"
+      url: "https://github.com/zhongyiio"
+    - name: "email"
+      url: "mailto:iygnohz@gmail.com"
+    - name: "rss"
+      url: "/index.xml"
+
+  # Home info mode
+  homeInfoParams:
+    Title: "欢迎来到我的博客 👋"
+    Content: "这里记录我的技术分享、学习心得和生活感悟。希望通过分享知识，与大家一起成长。"
+
+
