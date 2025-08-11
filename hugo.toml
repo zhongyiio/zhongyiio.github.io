@@ -3,12 +3,77 @@ theme = 'PaperMod'
 [pagination]
   pagerSize = 10
 enableRobotsTXT = true
-defaultContentLanguage = 'zh-cn'
+defaultContentLanguage = 'zh-CN'
+languageCode = 'zh-CN'
+hasCJKLanguage = true
+
+# 输出格式配置（支持搜索功能）
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+# 菜单配置
+[[menu.main]]
+  identifier = "archive"
+  name = "归档"
+  url = "/archives/"
+  weight = 10
+
+[[menu.main]]
+  identifier = "categories"  
+  name = "分类"
+  url = "/categories/"
+  weight = 20
+
+[[menu.main]]
+  identifier = "tags"
+  name = "标签" 
+  url = "/tags/"
+  weight = 30
+
+[[menu.main]]
+  identifier = "search"
+  name = "搜索"
+  url = "/search/"
+  weight = 40
 
 [params]
   defaultTheme = 'auto'
   mode = 'info'
+  ShowBreadCrumbs = true
+  ShowPostNavLinks = true
+  ShowCodeCopyButtons = true
+  ShowWordCount = true
+  ShowReadingTime = true
+  ShowShareButtons = true
+  ShowToc = true
+  TocOpen = true
+  
+  # 搜索功能
+  ShowSearch = true
+  
+  # 中文博客优化
+  DateFormat = "2006年01月02日"
+  
+  # 社交链接配置
+  [[params.socialIcons]]
+    name = "github"
+    url = "https://github.com/zhongyiio"
+  [[params.socialIcons]]
+    name = "email"  
+    url = "mailto:iygnohz@gmail.com"
+  
+  [params.label]
+    text = "Zhongyi I/O"
+    icon = "logo.jpeg"
+    iconHeight = 35
+  
+  [params.assets]
+    favicon = "logo.jpeg"
+    favicon16x16 = "logo.jpeg"
+    favicon32x32 = "logo.jpeg"
+    apple_touch_icon = "logo.jpeg"
+    safari_pinned_tab = "logo.jpeg"
 
 [params.homeInfoParams]
-  Title = "Hi there 👋"
-  Content = "Welcome to my personal blog. I write about technology, programming, and other interests."
+  Title = "欢迎来到我的博客 👋"
+  Content = "这里记录我的技术分享、学习心得和生活感悟。希望通过分享知识，与大家一起成长。"
