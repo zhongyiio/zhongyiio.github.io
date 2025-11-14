@@ -6,7 +6,7 @@ description: '记录一次由于存储故障导致 GC 日志写入阻塞,进而�
 categories: ['故障复盘']
 tags: ['java', 'jvm', 'gc', 'stw', 'kubernetes', 'nas']
 ShowToc: true
-TocOpen: true
+TocOpen: false
 ---
 
 ## 事故概述
