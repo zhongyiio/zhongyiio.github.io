@@ -3,7 +3,7 @@
 ## 创建新文章
 
 ```bash
-hugo new posts/my-post.md
+hugo new content content/posts/my-first-post.md
 ```
 
 ## 本地预览
