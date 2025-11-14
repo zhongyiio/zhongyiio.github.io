@@ -68,13 +68,14 @@ gateway: GC pause 176 秒
 
 `/xxx-pvc` 是个 PVC，挂的是 NAS，**所有服务共享同一个 NAS 盘**。
 
-如果 NAS 卡住了，会不会阻塞 GC？翻到了这篇文章印证了猜测：https://blog.mygraphql.com/zh/notes/java/java-gc-log-stuck/
+如果 NAS 卡住了，会不会阻塞 GC？翻到了这篇文章印证了猜测：
+[eBPF 求证坊间传闻：Java GC 日志可导致整个 JVM 服务卡顿？](https://blog.mygraphql.com/zh/notes/java/java-gc-log-stuck/)
 
 ### 验证
 
 查看 NAS 监控：
 
-![NAS IOPS 监控](nas-iops.png)
+![NAS IOPS 监控](images/nas-iops.png)
 
 两个时间点 IOPS 直接归零：
 - 23:35-23:50 
